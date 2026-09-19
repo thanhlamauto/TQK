@@ -281,6 +281,25 @@ pre-registered single-stage search based on shared `p_miss`/`ell` surfaces did n
 find any policy expected to beat progressive PSP on ImageReward under the fixed
 `M*t + K*(64−t) ≤ 256` budget.
 
+## Adaptive-K screen-and-commit result
+
+A separate development cycle (see
+[`exps/adaptive_k_sd15/`](exps/adaptive_k_sd15/README.md)) tested whether survivor
+compute can be redistributed from easy to ambiguous prompts at the same aggregate
+budget (`sum_p K_p = 2N`, exactly 256 average logical UNet evaluations). The
+method fixes `M=10`, `t=16`, `K in {1,2,3}`, predicts realized regrets from
+step-16 score geometry, and allocates `K` with an exact dynamic program.
+
+The out-of-fold gate **FAILED**, so no GenEval-553 validation was run.
+
+- Adaptive-K **beats fixed `10->2`** out of fold: mean `Delta IR = +0.004082`,
+  positive in 4 of 5 held-out folds.
+- Adaptive-K **loses to PSP** out of fold: mean `Delta IR = -0.047917`, 0 of 5
+  folds positive. A single prune-and-commit decision at step 16 cannot recover
+  PSP's multi-stage `8->4@16->2@32` advantage.
+
+Report: [`exps/adaptive_k_sd15/calibration/CALIBRATION_REPORT.md`](exps/adaptive_k_sd15/calibration/CALIBRATION_REPORT.md).
+
 ## License and citation
 
 The code retains the upstream MIT license. Please cite the PSP paper and clearly

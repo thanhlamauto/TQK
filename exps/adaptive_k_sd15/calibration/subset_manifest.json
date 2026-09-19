@@ -1,0 +1,32 @@
+{
+  "subset_seed": 20260919,
+  "subsets_per_prompt": 1000,
+  "pool_size": 10,
+  "candidates": 25,
+  "rows": 200000,
+  "prompts": 200,
+  "features": [
+    "g1",
+    "g2",
+    "g3",
+    "z1",
+    "z2",
+    "z3",
+    "z4",
+    "z1z3",
+    "z1z4",
+    "std",
+    "mad",
+    "maxmin",
+    "top3_mean",
+    "top3_std"
+  ],
+  "monotonicity_violation_rate_L1_lt_L2": 0.0,
+  "monotonicity_violation_rate_L2_lt_L3": 0.0,
+  "label_minima": {
+    "L1_min": 0.0,
+    "L2_min": 0.0,
+    "L3_min": 0.0
+  },
+  "dataset_sha256": "e913417804856cfde73693434616f6f9013764f76e490ab6ed3a189f41e61eed"
+}

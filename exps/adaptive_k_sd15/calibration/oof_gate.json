@@ -1,0 +1,11 @@
+{
+  "mean_delta_vs_psp": -0.04791654276331132,
+  "condition_A_mean_delta_vs_psp_positive": false,
+  "mean_delta_vs_fixed10to2": 0.0040824186492273845,
+  "condition_B_mean_delta_vs_fixed10to2_positive": true,
+  "positive_folds_vs_fixed10to2": 4,
+  "condition_C_at_least_4_of_5_fixed_folds_nonnegative": true,
+  "positive_folds_vs_psp": 0,
+  "preferred_at_least_3_of_5_psp_folds_nonnegative": false,
+  "pass": false
+}
