@@ -79,6 +79,12 @@ if [[ ! -f "${CAL}/FROZEN_SCHEDULE.json" ]]; then
   exit 0
 fi
 
+if [[ "${DENSE_PHASE1_ONLY:-0}" == "1" ]]; then
+  echo "[gate] freeze gate passed; DENSE_PHASE1_ONLY=1 so the confirmatory 553 phase is deferred"
+  echo "COMPLETE: ${CAL}/CALIBRATION_REPORT.md"
+  exit 0
+fi
+
 echo "[phase2] freeze gate passed; running confirmatory 553 with three fresh seed bases"
 bash "${CONF}/run_all.sh"
 
