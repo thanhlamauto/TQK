@@ -1,0 +1,16 @@
+{
+  "positive_mean_held_delta": false,
+  "mean_held_delta": -0.02940715403896499,
+  "positive_folds": 0,
+  "min_positive_folds": 4,
+  "positive_fold_gate": false,
+  "mean_spearman": 0.7809696655431684,
+  "min_rank_correlation": 0.8,
+  "rank_correlation_gate": false,
+  "coherent_neighborhood": true,
+  "selected_checkpoint_span": 0,
+  "selected_K_span": 0,
+  "predicted_winner_in_top3_folds": 2,
+  "predicted_winner_in_top5_folds": 2,
+  "pass": false
+}

@@ -115,8 +115,11 @@ Do not modify the committed frozen schedule when reproducing the reported run.
 ## Pre-registered next experiment
 
 The next experiment tests whether a structured calibration procedure can find
-a single-stage allocation expected to beat progressive PSP. This is a protocol
-specification; the denser calibration implementation has not yet been added.
+a single-stage allocation expected to beat progressive PSP. It is implemented in
+[`exps/dense_calibration_200/`](exps/dense_calibration_200/README.md) (calibration
+and freeze gate) and
+[`exps/confirmatory_553/`](exps/confirmatory_553/README.md) (confirmatory
+validation), and was executed once; see [the result](#result-of-the-next-experiment).
 Its search space, gates, endpoints, and thresholds must not be changed after the
 new calibration rewards are inspected.
 
@@ -239,6 +242,44 @@ optimization of ImageReward.
 Always report logical UNet evaluations, runtime mean/median/p90, throughput per
 GPU, peak allocated VRAM, batched verifier calls, candidate scores per prompt,
 all prompt IDs and seeds, and all paired confidence intervals.
+
+## Result of the next experiment
+
+The denser calibration was run once, exactly as pre-registered above (200 prompts,
+57 policies, shared reliability surfaces, deterministic five-fold out-of-fold
+selection). The **out-of-fold gate failed**, so per the pre-registered stop rule
+the confirmatory 553-prompt phase was **not** run.
+
+- Calibration bank: 200 prompts × 25 complete trajectories. ImageReward stored at
+  every step `10..28` plus step `32` (for PSP replay) and step 64.
+- Fixed PSP `8→4@16→2@32` replayed on the same subset draws: mean calibration IR
+  `0.851613`.
+- Across all 57 single-stage policies, the empirical `Delta IR` on the calibration
+  bank was **negative for every policy**; the best was `7→2@25` at `−0.022657`
+  (range `−0.287 … −0.023`). The multi-stage comparator wins because it buys
+  8-seed breadth cheaply by pruning early, which the fixed budget cannot buy at a
+  single checkpoint.
+- Out-of-fold selection (fit on 160 prompts, replay on 40 held-out prompts): mean
+  held-out `Delta IR` was `−0.029407`, **0 of 5 folds positive**, mean schedule-rank
+  Spearman `0.781`, and the selector was coherent (it chose the same neighborhood
+  in every fold: `7→3@16`). The gate requires positive mean `Delta IR`, at least
+  four positive folds, and rank correlation ≈ `0.8`; it failed on the first two
+  and marginally on the third.
+- Because the out-of-fold gate failed, the freeze gate was not evaluated and no
+  `FROZEN_SCHEDULE.json` was produced. This is a reported, not tuned-away,
+  negative result.
+
+Artifacts:
+
+- [`exps/dense_calibration_200/CALIBRATION_REPORT.md`](exps/dense_calibration_200/CALIBRATION_REPORT.md)
+- [`exps/dense_calibration_200/replay/oof_gate.json`](exps/dense_calibration_200/replay/oof_gate.json)
+- [`exps/dense_calibration_200/replay/oof_folds.csv`](exps/dense_calibration_200/replay/oof_folds.csv)
+- [`exps/dense_calibration_200/replay/cell_estimates.csv`](exps/dense_calibration_200/replay/cell_estimates.csv)
+
+The narrow supported claim is that, on this calibration corpus and seed pool, the
+pre-registered single-stage search based on shared `p_miss`/`ell` surfaces did not
+find any policy expected to beat progressive PSP on ImageReward under the fixed
+`M*t + K*(64−t) ≤ 256` budget.
 
 ## License and citation
 

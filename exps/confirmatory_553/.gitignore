@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+outputs/
+metadata/
+logs/
+geneval_inputs/
+geneval_results/
+results_bundle.tar.gz
