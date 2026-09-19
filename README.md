@@ -300,6 +300,36 @@ The out-of-fold gate **FAILED**, so no GenEval-553 validation was run.
 
 Report: [`exps/adaptive_k_sd15/calibration/CALIBRATION_REPORT.md`](exps/adaptive_k_sd15/calibration/CALIBRATION_REPORT.md).
 
+## Value-of-Information (commit vs re-observe) result
+
+A third development cycle
+([`exps/voi_commit_vs_reobserve/`](exps/voi_commit_vs_reobserve/README.md))
+asks whether, from the 10 step-16 ImageReward scores, one can choose between two
+exactly-equal-compute actions: **A** commit (`10->2@16`, 256 NFE) or **B**
+re-observe (`10->4@16->1@32`, 256 NFE).
+
+The **oracle gate passed but the learned-policy gate failed**:
+
+| Prompt-level quantity | Value |
+|---|---:|
+| Oracle `max(Y_A, Y_B)` | 0.878000 |
+| Fixed A | 0.802471 |
+| Fixed B | 0.810636 |
+| PSP | 0.852444 |
+| **Oracle - PSP** | **+0.025556** (positive in 5/5 folds) |
+| Oracle - A / Oracle - B | +0.075529 / +0.067364 |
+
+So the action family **has enough headroom to beat PSP** (a perfect selector
+would win by ~0.026 IR), but step-16 score geometry does not predict
+`V = Y_B - Y_A` (best OOF Spearman ~0.03), the learned policy loses to PSP
+(-0.0467) and does not beat both fixed actions, and realized VOI is not monotone
+in predicted-VOI quintiles.
+
+**The bottleneck is predictor quality, not action-family expressiveness.** Per the
+pre-registered stop rule, no selector was frozen and no GenEval-553 validation was
+run. Report:
+[`exps/voi_commit_vs_reobserve/calibration/CALIBRATION_REPORT.md`](exps/voi_commit_vs_reobserve/calibration/CALIBRATION_REPORT.md).
+
 ## License and citation
 
 The code retains the upstream MIT license. Please cite the PSP paper and clearly

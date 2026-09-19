@@ -1,0 +1,10 @@
+{
+  "mean_oracle": 0.8779999574197119,
+  "mean_Y_A": 0.8024711950661638,
+  "mean_Y_B": 0.8106361825229408,
+  "mean_Y_PSP": 0.8524442698871064,
+  "oracle_headroom_over_psp": 0.025555687532605367,
+  "oracle_headroom_over_A": 0.07552876235354808,
+  "oracle_headroom_over_B": 0.06736377489677108,
+  "pass": true
+}

@@ -1,0 +1,24 @@
+{
+  "source_dense_bank": "/workspace/TQK/exps/dense_calibration_200",
+  "source_prompt_manifest_sha256": "2a77d5ef008d126469a2d1983fe6971ed6d3b428d754c673811e1b2b46eafff5",
+  "prompt_count": 200,
+  "seeds_per_prompt": 25,
+  "trajectory_count": 5000,
+  "columns": [
+    "prompt_id",
+    "prompt",
+    "fold",
+    "candidate_id",
+    "seed",
+    "IR_step16",
+    "IR_step32",
+    "IR_final"
+  ],
+  "candidate_seed_base": 20260920,
+  "model": "runwayml/stable-diffusion-v1-5",
+  "scheduler": "DDIM",
+  "steps": 64,
+  "eta": 0.0,
+  "guidance_scale": 7.5,
+  "bank_parquet_sha256": "c8ed4c2384323fecf3149c2763cd2f62fd32ef6acf167a1935bc5c463a578af5"
+}

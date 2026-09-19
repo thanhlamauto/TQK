@@ -1,0 +1,11 @@
+{
+  "primary_model": "boost",
+  "mean_delta_vs_psp": -0.046711469280597814,
+  "condition_adaptive_vs_psp_positive": false,
+  "beats_fixed_A": true,
+  "beats_fixed_B": false,
+  "condition_adaptive_beats_max_fixed": false,
+  "positive_psp_folds": 0,
+  "preferred_at_least_4_of_5": false,
+  "pass": false
+}

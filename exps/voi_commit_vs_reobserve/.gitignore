@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+logs/
+calibration/bank.parquet
+calibration/bank.csv
+calibration/pool_examples.parquet
+calibration/oof_predictions.parquet
+policy/*.pkl
+validation/outputs/
+validation/metadata/
+validation/logs/
+validation/*/outputs/
+*.tar.gz
