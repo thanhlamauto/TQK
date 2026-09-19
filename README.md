@@ -330,6 +330,33 @@ pre-registered stop rule, no selector was frozen and no GenEval-553 validation w
 run. Report:
 [`exps/voi_commit_vs_reobserve/calibration/CALIBRATION_REPORT.md`](exps/voi_commit_vs_reobserve/calibration/CALIBRATION_REPORT.md).
 
+## Predictor v2 (weighted objective + temporal/dynamics information) result
+
+A follow-up cycle
+([`exps/voi_predictor_v2/`](exps/voi_predictor_v2/README.md)) changed the
+objective to a weighted classifier for `1[V>0]` with weight `|V|` (Bayes-aligned
+with final ImageReward) and pre-registered four feature families: F0 scalar
+step-16; F1 temporal reward dynamics (steps 12/14/16); F2 predicted-clean latent
+drift; F3 = F1+F2+frozen 768-d ImageReward hidden features (PCA-16, fit on
+training folds).
+
+PSP requires capturing at least 62% of the `Oracle - B` headroom
+(`0.621 = (0.852444-0.810636)/(0.878000-0.810636)`). No family came close:
+
+| Family | Q_policy | Delta vs PSP | Headroom captured | PSP folds | AUC |
+|---|---:|---:|---:|---:|---:|
+| F0 scalar step-16 | 0.810676 | -0.041769 | 0.1% | 0/5 | 0.581 |
+| F1 temporal reward | 0.808496 | -0.043948 | -3.2% | 0/5 | 0.566 |
+| F2 latent drift | 0.806805 | -0.045639 | -5.7% | 0/5 | 0.556 |
+| F3 combined + IR hidden | 0.810968 | -0.041477 | 0.5% | 0/5 | 0.557 |
+
+**The bottleneck is information, not predictor objective or capacity.** Adding
+temporal reward dynamics, latent drift, and ImageReward hidden features yields no
+usable signal about the value of re-observation. No GenEval-553 validation was
+run; the pre-registered next direction is a noise-aware verifier (e.g. TTSnap)
+rather than a more complex predictor. Report:
+[`exps/voi_predictor_v2/calibration/CALIBRATION_REPORT.md`](exps/voi_predictor_v2/calibration/CALIBRATION_REPORT.md).
+
 ## License and citation
 
 The code retains the upstream MIT license. Please cite the PSP paper and clearly

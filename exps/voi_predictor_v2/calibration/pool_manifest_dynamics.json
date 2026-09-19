@@ -1,0 +1,18 @@
+{
+  "pool_seed": 20260920,
+  "rows": 200000,
+  "F2_features": [
+    "drift_mean_top4",
+    "drift_max_top4",
+    "drift_std_top4",
+    "drift_rank34_minus_rank12",
+    "latent_div_top4"
+  ],
+  "dataset_sha256": "6e00e465c5f31d4ec40f08dc9669bfd1ee6d818694b09fc0b0b4bc22f4718870",
+  "hidden_sha256": "d20beefab4f2e65263962881fc7b3078b6a182ea887f56e13f83dec936bd9691",
+  "hidden_shape": [
+    200,
+    25,
+    768
+  ]
+}

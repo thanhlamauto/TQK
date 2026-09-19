@@ -1,0 +1,18 @@
+{
+  "best_family_model": "F3:logistic",
+  "q_policy": 0.8109676270278805,
+  "delta_vs_psp": -0.04147664285922598,
+  "capture": 0.004920218699852016,
+  "positive_psp_folds": 0,
+  "condition_beats_psp": false,
+  "condition_4_of_5_folds": false,
+  "condition_capture_gt_65pct": false,
+  "strong_capture_ge_70pct": false,
+  "baseline": {
+    "Q_A": 0.8024711950661638,
+    "Q_B": 0.8106361825229408,
+    "Q_PSP": 0.8524442698871064,
+    "Q_oracle": 0.8779999574197119
+  },
+  "pass": false
+}

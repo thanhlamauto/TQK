@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+logs/
+calibration/bank.parquet
+calibration/pool_examples_f01.parquet
+calibration/pool_examples_dynamics.parquet
+dynamics_raw/
+policy/*.pkl
+*.tar.gz

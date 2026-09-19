@@ -1,0 +1,14 @@
+{
+  "source_dense_bank": "/workspace/TQK/exps/dense_calibration_200",
+  "prompt_count": 200,
+  "seeds_per_prompt": 25,
+  "trajectory_count": 5000,
+  "steps": [
+    12,
+    14,
+    16,
+    32
+  ],
+  "candidate_seed_base": 20260920,
+  "bank_parquet_sha256": "9b96b2424d42395eaefa8601ee963a714d8d299e9c64c12ca86892ad45b0cb55"
+}
